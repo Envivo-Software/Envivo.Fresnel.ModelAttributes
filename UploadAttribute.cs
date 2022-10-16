@@ -4,18 +4,30 @@ using System;
 
 namespace Envivo.Fresnel.ModelAttributes
 {
+    /// <summary>
+    /// Declares the UI behaviour for upload operations
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
     public class UploadAttribute : Attribute
     {
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public UploadAttribute()
         {
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public UploadAttribute(string accept)
         {
             this.Accept = accept;
         }
 
+        /// <summary>
+        /// A list of file-types that may be uploaded (e.g.".png, .jpg")
+        /// </summary>
         public string Accept { get; set; }
     }
 }
