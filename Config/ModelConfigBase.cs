@@ -4,25 +4,22 @@ using System.Collections.Generic;
 namespace Envivo.Fresnel.ModelAttributes.Config
 {
     /// <summary>
-    /// Used to configure a set of Domain Classes
+    /// <inheritdoc/>
     /// </summary>
-    public abstract class ModelConfigBase
+    public abstract class ModelConfigBase : IModelConfig
     {
-
         private Dictionary<Type, IClassConfiguration> _ClassConfigurations = new();
 
         /// <summary>
-        /// Used to configure classes within the Domain Model
+        /// <inheritdoc/>
         /// </summary>
         public virtual void Configure()
         {
         }
 
         /// <summary>
-        /// Returns a ClassConfiguration for the given class type
+        /// <inheritdoc/>
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
         public ClassConfiguration<T> ConfigureClass<T>()
             where T : class
         {
@@ -33,8 +30,9 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         }
 
         /// <summary>
-        /// Returns all custom Class Configurations
+        /// <inheritdoc/>
         /// </summary>
+        /// <returns></returns>
         public IDictionary<Type, IClassConfiguration> GetClassConfigurations()
         {
             return _ClassConfigurations;
