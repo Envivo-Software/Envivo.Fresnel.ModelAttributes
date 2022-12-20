@@ -23,16 +23,34 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         private readonly Dictionary<MethodInfo, List<Attribute>> _MethodAttributes = new();
         private readonly Dictionary<MethodInfo, Dictionary<string, List<Attribute>>> _MethodParameterAttributes = new();
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IEnumerable<Attribute> ClassAttributes => _ClassAttributes;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IEnumerable<Attribute> ConstructorAttributes => _ConstructorAttributes;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IDictionary<string, IEnumerable<Attribute>> ConstructorParameterAttributes => AsDictionaryOfIEnumerable(_ConstructorParameterAttributes);
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IDictionary<PropertyInfo, IEnumerable<Attribute>> PropertyAttributes => AsDictionaryOfIEnumerable(_PropertyAttributes);
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IDictionary<MethodInfo, IEnumerable<Attribute>> MethodAttributes => AsDictionaryOfIEnumerable(_MethodAttributes);
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public IDictionary<MethodInfo, IDictionary<string, IEnumerable<Attribute>>> MethodParameterAttributes => AsDictionaryOfIEnumerable(_MethodParameterAttributes);
 
         private IDictionary<TKey, IEnumerable<Attribute>> AsDictionaryOfIEnumerable<TKey>(Dictionary<TKey, List<Attribute>> values)
@@ -173,27 +191,6 @@ namespace Envivo.Fresnel.ModelAttributes.Config
             cachedAttributes.AddRange(additionalAttributes);
 
             return this;
-        }
-
-        public IEnumerable<Attribute> GetClassAttributes()
-        {
-            return _ClassAttributes;
-        }
-
-        public IDictionary<PropertyInfo, IEnumerable<Attribute>> GetPropertyAttributes()
-        {
-            var results =
-                _PropertyAttributes
-                .ToDictionary(kv => kv.Key, kv => kv.Value.AsEnumerable());
-            return results;
-        }
-
-        public IDictionary<MethodInfo, IEnumerable<Attribute>> GetMethodAttributes()
-        {
-            var results =
-                _MethodAttributes
-                .ToDictionary(kv => kv.Key, kv => kv.Value.AsEnumerable());
-            return results;
         }
     }
 }
