@@ -192,5 +192,18 @@ namespace Envivo.Fresnel.ModelAttributes.Config
 
             return this;
         }
+
+        internal void AddClassAttributes(Attribute attribute, Attribute[] additionalAttributes)
+        {
+            if (attribute != null)
+            {
+                _ClassAttributes.Add(attribute);
+            }
+
+            if (additionalAttributes?.Any() == true)
+            {
+                _ClassAttributes.AddRange(additionalAttributes);
+            }
+        }
     }
 }

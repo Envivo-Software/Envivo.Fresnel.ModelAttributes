@@ -32,6 +32,19 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        public ClassConfiguration<T> ConfigureClass<T>(Attribute attribute, params Attribute[] additionalAttributes)
+            where T : class
+        {
+            var classConfiguration = new ClassConfiguration<T>();
+            classConfiguration.AddClassAttributes(attribute, additionalAttributes);
+            _ClassConfigurations.Add(typeof(T), classConfiguration);
+
+            return classConfiguration;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         /// <returns></returns>
         public IDictionary<Type, IClassConfiguration> GetClassConfigurations()
         {
