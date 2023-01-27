@@ -10,4 +10,4 @@ For more details, see the documentation at https://github.com/Envivo-Software/Fr
 
 ![](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
 
-*Copyright 2022 Envivo Software*
+*Copyright 2022-2023 Envivo Software*
