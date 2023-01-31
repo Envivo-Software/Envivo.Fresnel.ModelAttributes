@@ -7,7 +7,7 @@ namespace Envivo.Fresnel.ModelAttributes
     /// <summary>
     /// Declares the visibility of the associated item
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Parameter)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Constructor | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Parameter)]
     public class VisibleAttribute : Attribute
     {
         /// <summary>
