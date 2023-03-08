@@ -32,6 +32,9 @@ namespace Envivo.Fresnel.ModelAttributes
             // Typed Arrays contain these:
             namesToHide.AddRange(new string[] { "Get", "Set" });
 
+            // Records contain these:
+            namesToHide.AddRange(new string[] { "Equals", "Equals_1", "<Clone>$" });
+
             var results =
                 namesToHide
                 .Distinct()
