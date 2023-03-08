@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -18,55 +19,72 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         private readonly List<Attribute> _ConstructorAttributes = new();
         private readonly Dictionary<string, List<Attribute>> _ConstructorParameterAttributes = new();
 
-        private readonly Dictionary<PropertyInfo, List<Attribute>> _PropertyAttributes = new();
+        private readonly Dictionary<string, List<Attribute>> _PropertyAttributes = new();
 
-        private readonly Dictionary<MethodInfo, List<Attribute>> _MethodAttributes = new();
-        private readonly Dictionary<MethodInfo, Dictionary<string, List<Attribute>>> _MethodParameterAttributes = new();
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        public IEnumerable<Attribute> ClassAttributes => _ClassAttributes;
+        private readonly Dictionary<string, List<Attribute>> _MethodAttributes = new();
+        private readonly Dictionary<string, Dictionary<string, List<Attribute>>> _MethodParameterAttributes = new();
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IEnumerable<Attribute> ConstructorAttributes => _ConstructorAttributes;
+        public IReadOnlyCollection<Attribute> ClassAttributes => _ClassAttributes;
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IDictionary<string, IEnumerable<Attribute>> ConstructorParameterAttributes => AsDictionaryOfIEnumerable(_ConstructorParameterAttributes);
+        public IReadOnlyCollection<Attribute> ConstructorAttributes => _ConstructorAttributes;
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IDictionary<PropertyInfo, IEnumerable<Attribute>> PropertyAttributes => AsDictionaryOfIEnumerable(_PropertyAttributes);
+        public IDictionary<string, IReadOnlyCollection<Attribute>> ConstructorParameterAttributes => AsDictionaryOfReadOnlyCollection(_ConstructorParameterAttributes);
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IDictionary<MethodInfo, IEnumerable<Attribute>> MethodAttributes => AsDictionaryOfIEnumerable(_MethodAttributes);
+        public IDictionary<string, IReadOnlyCollection<Attribute>> PropertyAttributes => AsDictionaryOfReadOnlyCollection(_PropertyAttributes);
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public IDictionary<MethodInfo, IDictionary<string, IEnumerable<Attribute>>> MethodParameterAttributes => AsDictionaryOfIEnumerable(_MethodParameterAttributes);
+        public IDictionary<string, IReadOnlyCollection<Attribute>> MethodAttributes => AsDictionaryOfReadOnlyCollection(_MethodAttributes);
 
-        private IDictionary<TKey, IEnumerable<Attribute>> AsDictionaryOfIEnumerable<TKey>(Dictionary<TKey, List<Attribute>> values)
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public IDictionary<string, IDictionary<string, IReadOnlyCollection<Attribute>>> MethodParameterAttributes => AsDictionaryOfReadOnlyCollection(_MethodParameterAttributes);
+
+        private IDictionary<TKey, IReadOnlyCollection<Attribute>> AsDictionaryOfReadOnlyCollection<TKey>(Dictionary<TKey, List<Attribute>> values)
         {
             return
                 values
                 .ToDictionary(i => i.Key,
-                              i => i.Value.AsEnumerable());
+                              i => (IReadOnlyCollection<Attribute>)i.Value.AsReadOnly());
         }
 
-        private IDictionary<TKey, IDictionary<string, IEnumerable<Attribute>>> AsDictionaryOfIEnumerable<TKey>(Dictionary<TKey, Dictionary<string, List<Attribute>>> values)
+        private IDictionary<TKey, IDictionary<string, IReadOnlyCollection<Attribute>>> AsDictionaryOfReadOnlyCollection<TKey>(Dictionary<TKey, Dictionary<string, List<Attribute>>> values)
         {
-            return
+            var stagingDict =
                 values
-                .ToDictionary(i => i.Key,
-                              i => (IDictionary<string, IEnumerable<Attribute>>)i.Value.ToDictionary(j => j.Key, j => j.Value.AsEnumerable()));
+                .Select(i =>
+                {
+                    var innerDictionary =
+                        i.Value
+                        .ToDictionary(i => i.Key, i => (IReadOnlyCollection<Attribute>)i.Value.AsReadOnly());
+
+                    return new
+                    {
+                        i.Key,
+                        InnerDictionary = (IDictionary<string, IReadOnlyCollection<Attribute>>)innerDictionary
+                    };
+                })
+                .ToList();
+
+            var result =
+                stagingDict
+                .ToDictionary(i => i.Key, i => i.InnerDictionary);
+
+            return result;
         }
 
         /// <summary>
@@ -127,11 +145,11 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         {
             var propInfo = propIdentifier.GetPropertyInfo();
 
-            var cachedAttributes = _PropertyAttributes.GetValueOrDefault(propInfo);
+            var cachedAttributes = _PropertyAttributes.GetValueOrDefault(propInfo.Name);
             if (cachedAttributes == null)
             {
                 cachedAttributes = new List<Attribute>();
-                _PropertyAttributes.Add(propInfo, cachedAttributes);
+                _PropertyAttributes.Add(propInfo.Name, cachedAttributes);
             }
             cachedAttributes.Add(attribute);
             cachedAttributes.AddRange(additionalAttributes);
@@ -150,11 +168,11 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         {
             var methodInfo = methodIdentifier.GetMethodInfo();
 
-            var cachedAttributes = _MethodAttributes.GetValueOrDefault(methodInfo);
+            var cachedAttributes = _MethodAttributes.GetValueOrDefault(methodInfo.Name);
             if (cachedAttributes == null)
             {
                 cachedAttributes = new List<Attribute>();
-                _MethodAttributes.Add(methodInfo, cachedAttributes);
+                _MethodAttributes.Add(methodInfo.Name, cachedAttributes);
             }
             cachedAttributes.Add(attribute);
             cachedAttributes.AddRange(additionalAttributes);
@@ -174,11 +192,11 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         {
             var methodInfo = methodIdentifier.GetMethodInfo();
 
-            var methodAttributes = _MethodParameterAttributes.GetValueOrDefault(methodInfo);
+            var methodAttributes = _MethodParameterAttributes.GetValueOrDefault(methodInfo.Name);
             if (methodAttributes == null)
             {
                 methodAttributes = new Dictionary<string, List<Attribute>>();
-                _MethodParameterAttributes.Add(methodInfo, methodAttributes);
+                _MethodParameterAttributes.Add(methodInfo.Name, methodAttributes);
             }
 
             var cachedAttributes = methodAttributes.GetValueOrDefault(parameterName);

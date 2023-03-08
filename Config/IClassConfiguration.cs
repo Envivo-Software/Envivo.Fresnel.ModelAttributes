@@ -12,29 +12,29 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         /// <summary>
         /// Returns all Attributes that are applied to a Domain Class
         /// </summary>
-        IEnumerable<Attribute> ClassAttributes { get; }
+        IReadOnlyCollection<Attribute> ClassAttributes { get; }
 
         /// <summary>
         /// Returns all Attributes that are applied to a Domain Class' Constructors
         /// </summary>
-        IEnumerable<Attribute> ConstructorAttributes { get; }
+        IReadOnlyCollection<Attribute> ConstructorAttributes { get; }
 
         /// <summary>
         /// Returns all Attributes that are applied to a Domain Class Constructor's Parameters
         /// </summary>
-        IDictionary<string, IEnumerable<Attribute>> ConstructorParameterAttributes { get; }
+        IDictionary<string, IReadOnlyCollection<Attribute>> ConstructorParameterAttributes { get; }
 
         /// <summary>
         /// Returns all Attributes that are applied to a Domain Class' Properties
         /// </summary>
-        IDictionary<PropertyInfo, IEnumerable<Attribute>> PropertyAttributes { get; }
+        IDictionary<string, IReadOnlyCollection<Attribute>> PropertyAttributes { get; }
 
         /// <summary>
         /// Returns all Attributes that are applied to a Domain Class' Methods
         /// </summary>
-        IDictionary<MethodInfo, IEnumerable<Attribute>> MethodAttributes { get; }
+        IDictionary<string, IReadOnlyCollection<Attribute>> MethodAttributes { get; }
 
         /// Returns all Attributes that are applied to a Domain Class Method's Parameters
-        IDictionary<MethodInfo, IDictionary<string, IEnumerable<Attribute>>> MethodParameterAttributes { get; }
+        IDictionary<string, IDictionary<string, IReadOnlyCollection<Attribute>>> MethodParameterAttributes { get; }
     }
 }
