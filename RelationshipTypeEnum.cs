@@ -8,6 +8,11 @@ namespace Envivo.Fresnel.ModelAttributes
     public enum RelationshipType
     {
         /// <summary>
+        /// The relationship has not been specified
+        /// </summary>
+        Unspecified,
+
+        /// <summary>
         /// Aka Aggregation. This object is related to the property's content(s). Deleting this object will not affect these contents.
         /// </summary>
         Has,
