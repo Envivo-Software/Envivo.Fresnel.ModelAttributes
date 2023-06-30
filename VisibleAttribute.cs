@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: LicenseRef-proprietary=www.envivo.co.uk/fresnel-eula
 using System;
+using System.Numerics;
 
 namespace Envivo.Fresnel.ModelAttributes
 {
@@ -14,14 +15,21 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <inheritdoc/>
         /// </summary>
         /// <param name="isVisible"></param>
-        public VisibleAttribute(bool isVisible = true)
+        /// <param name="isVisibleInLibrary"></param>
+        public VisibleAttribute(bool isVisible = true, bool isVisibleInLibrary = true)
         {
             IsVisible = isVisible;
+            IsVisibleInLibrary = isVisibleInLibrary;
         }
 
         /// <summary>
         /// Determines if the item is visible in the UI
         /// </summary>
         public bool IsVisible { get; }
+
+        /// <summary>
+        /// Determines if the item is visible in the Library panel
+        /// </summary>
+        public bool IsVisibleInLibrary { get; }
     }
 }
