@@ -5,16 +5,15 @@ using System;
 namespace Envivo.Fresnel.ModelAttributes
 {
     /// <summary>
-    /// Declares the actions allowed when invoking the associated member
+    /// Declares the actions allowed when invoking the associated method
     /// </summary>
-    [Obsolete("Please use MethodAttribute instead")]
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
-    public class InvocationAttrbute : Attribute
+    [AttributeUsage(AttributeTargets.Method)]
+    public class MethodAttribute : Attribute
     {
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public InvocationAttrbute()
+        public MethodAttribute()
         {
             this.PromptForUnsavedChanges = true;
         }
@@ -23,14 +22,19 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <inheritdoc/>
         /// </summary>
         /// <param name="mustPrompt"></param>
-        public InvocationAttrbute(bool mustPrompt)
+        public MethodAttribute(bool mustPrompt)
         {
             this.PromptForUnsavedChanges = mustPrompt;
         }
 
         /// <summary>
-        /// Determines if the user should be prompted to save changes when the associated member is invoked
+        /// Determines if the user should be prompted to save changes when the associated method is invoked
         /// </summary>
         public bool PromptForUnsavedChanges { get; set; }
+
+        /// <summary>
+        /// The name of the Property that the associated method should be rendered
+        /// </summary>
+        public string RelatedPropertyName { get; set; }
     }
 }
