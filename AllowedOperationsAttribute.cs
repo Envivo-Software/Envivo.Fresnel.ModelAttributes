@@ -7,7 +7,7 @@ namespace Envivo.Fresnel.ModelAttributes
     /// <summary>
     /// Declares the operations that are allowed on the associaated item
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method)]
     public class AllowedOperationsAttribute : Attribute
     {
         /// <summary>

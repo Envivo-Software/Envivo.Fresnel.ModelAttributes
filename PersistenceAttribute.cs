@@ -7,7 +7,7 @@ namespace Envivo.Fresnel.ModelAttributes
     /// <summary>
     /// Delcares the persistence behaviour of the associated item
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Property)]
     public class PersistenceAttribute : Attribute
     {
         /// <summary>
