@@ -13,28 +13,34 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public MethodAttribute()
+        /// <param name="relatedPropertyName"></param>
+        /// <param name="mandatoryPromptText"></param>
+        /// <param name="unsavedChangesPromptText"></param>
+        public MethodAttribute
+        (
+            string relatedPropertyName = null,
+            string mandatoryPromptText = null,
+            string unsavedChangesPromptText = "There are unsaved changes. Save them before continuing?"
+        )
         {
-            this.PromptForUnsavedChanges = true;
+            RelatedPropertyName = relatedPropertyName;
+            MandatoryPromptText = mandatoryPromptText;
+            UnsavedChangesPromptText = unsavedChangesPromptText;
         }
 
         /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="mustPrompt"></param>
-        public MethodAttribute(bool mustPrompt)
-        {
-            this.PromptForUnsavedChanges = mustPrompt;
-        }
-
-        /// <summary>
-        /// Determines if the user should be prompted to save changes when the associated method is invoked
-        /// </summary>
-        public bool PromptForUnsavedChanges { get; set; }
-
-        /// <summary>
-        /// The name of the Property that the associated method should be rendered
+        /// The name of the Property that the method should be rendered against
         /// </summary>
         public string RelatedPropertyName { get; set; }
+
+        /// <summary>
+        /// Displays this text before the method is invoked
+        /// </summary>
+        public string MandatoryPromptText { get; }
+
+        /// <summary>
+        /// Displays this text if the parent object has unsaved changes
+        /// </summary>
+        public string UnsavedChangesPromptText { get; }
     }
 }
