@@ -13,14 +13,14 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        /// <param name="relatedPropertyName"></param>
-        /// <param name="mandatoryPromptText"></param>
-        /// <param name="unsavedChangesPromptText"></param>
+        /// <param name="relatedPropertyName">The name of the Property that the method should be rendered against</param>
+        /// <param name="mandatoryPromptText">Displays this text before the method is invoked</param>
+        /// <param name="unsavedChangesPromptText">Displays this text if the parent object has unsaved changes</param>
         public MethodAttribute
         (
             string relatedPropertyName = null,
             string mandatoryPromptText = null,
-            string unsavedChangesPromptText = "There are unsaved changes. Save them before continuing?"
+            string unsavedChangesPromptText = null
         )
         {
             RelatedPropertyName = relatedPropertyName;
@@ -36,11 +36,11 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <summary>
         /// Displays this text before the method is invoked
         /// </summary>
-        public string MandatoryPromptText { get; }
+        public string MandatoryPromptText { get; set; }
 
         /// <summary>
         /// Displays this text if the parent object has unsaved changes
         /// </summary>
-        public string UnsavedChangesPromptText { get; }
+        public string UnsavedChangesPromptText { get; set; }
     }
 }
