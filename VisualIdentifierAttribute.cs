@@ -5,7 +5,7 @@ using System;
 namespace Envivo.Fresnel.ModelAttributes
 {
     /// <summary>
-    /// Declares how the class/member is visually identifed in the UI
+    /// Declares how the class/member is visually identified in the UI
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public class VisualIdentifierAttribute : Attribute
