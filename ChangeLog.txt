@@ -1,4 +1,22 @@
+2023-10-11: v2.3.0
+
+⚠ Breaking changes: Updated to .NET 7
+
+🎁 New features:
+- Added CollectionMethodAttribute
+- Added MethodAttribute (replaced InvocationAttribute)
+- Added VisualIdentifierAttribute
+
+🎨 Improvements:
+- Added VisibleAttribute.IsVisibleInLibrary
+- Added RelationshipTypeEnum.Unspecified
+
+🐞 Fixes:
+- AttributeUsage now includes Interfaces
+ 
+==============================================================================
 2023-05-08: v2.0.1
+
 ⚠ Breaking changes:
 - IClassConfiguration now exposes IReadOnlyCollection instead of IEnumerable
 
@@ -8,6 +26,7 @@
 ==============================================================================
 
 2023-01-31: v1.1.0
+
 🎁 New features:
 - Added ModelConfigBase (alternative to inline Attribute Configurations)
 
@@ -20,4 +39,5 @@
 ==============================================================================
 
 2022-09-01: v1.0.1 
+
 	First public release
