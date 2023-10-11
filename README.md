@@ -8,6 +8,6 @@ You can find usage examples in the following projects:
 
 For more details, see the documentation at https://github.com/Envivo-Software/Envivo.Fresnel/wiki
 
-![](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
+![Fresnel for .NET](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
 
 *Copyright 2022-2023 Envivo Software*
