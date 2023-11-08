@@ -14,7 +14,6 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <inheritdoc/>
         /// </summary>
         /// <param name="specificationType"></param>
-        /// <param name="runWhenContextChanges"></param>
         public FilterQuerySpecificationAttribute(Type specificationType = null)
         {
             this.SpecificationType = specificationType;
