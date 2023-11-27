@@ -1,3 +1,30 @@
+2023-11-27: v2.4.0
+
+🎁 New features:
+- Added RelationalQuerySpecificationAttribute
+
+🐞 Fixes:
+- Downgraded to .NET 6, to retain backwards compatibilty
+- Removed dead comments
+
+==============================================================================
+2023-10-11: v2.3.0
+
+⚠ Breaking changes: Updated to .NET 7
+
+🎁 New features:
+- Added CollectionMethodAttribute
+- Added MethodAttribute (replaced InvocationAttribute)
+- Added VisualIdentifierAttribute
+
+🎨 Improvements:
+- Added VisibleAttribute.IsVisibleInLibrary
+- Added RelationshipTypeEnum.Unspecified
+
+🐞 Fixes:
+- AttributeUsage now includes Interfaces
+ 
+==============================================================================
 2023-10-11: v2.3.0
 
 ⚠ Breaking changes: Updated to .NET 7
