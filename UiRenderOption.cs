@@ -8,7 +8,7 @@ namespace Envivo.Fresnel.ModelAttributes
     public enum UiRenderOption
     {
         /// <summary>
-        /// The object is show as a single entry
+        /// The object is shown as a simple compact entry
         /// </summary>
         InlineSimple,
 
@@ -18,7 +18,7 @@ namespace Envivo.Fresnel.ModelAttributes
         InlineExpanded,
 
         /// <summary>
-        /// The object' properties are shown in a separate tab
+        /// The object's properties are shown in a separate tab
         /// </summary>
         SeparateTabExpanded
     }
