@@ -10,10 +10,8 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
     public class RelationshipAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type"><inheritdoc cref="Type" path="/summary"/></param>
         public RelationshipAttribute(RelationshipType type = RelationshipType.Has)
         {
             this.Type = type;

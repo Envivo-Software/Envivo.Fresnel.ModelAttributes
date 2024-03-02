@@ -10,14 +10,12 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
     public class UIAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="renderOption"></param>
-        /// <param name="decimalPlaces"></param>
-        /// <param name="preferredControl"></param>
-        /// <param name="trueValue"></param>
-        /// <param name="falseValue"></param>
+        /// <param name="renderOption"><inheritdoc cref="RenderOption" path="/summary"/></param>
+        /// <param name="decimalPlaces"><inheritdoc cref="DecimalPlaces" path="/summary"/></param>
+        /// <param name="preferredControl"><inheritdoc cref="PreferredControl" path="/summary"/></param>
+        /// <param name="trueValue"><inheritdoc cref="TrueValue" path="/summary"/></param>
+        /// <param name="falseValue"><inheritdoc cref="FalseValue" path="/summary"/><param>
         public UIAttribute
         (
             UiRenderOption renderOption = UiRenderOption.SeparateTabExpanded,

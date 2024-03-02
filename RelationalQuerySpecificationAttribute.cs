@@ -11,10 +11,8 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
     public class RelationalQuerySpecificationAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="specificationType"></param>
+        /// <param name="specificationType"><inheritdoc cref="SpecificationType" path="/summary"/></param>
         public RelationalQuerySpecificationAttribute(Type specificationType = null)
         {
             this.SpecificationType = specificationType;

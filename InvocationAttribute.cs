@@ -9,21 +9,17 @@ namespace Envivo.Fresnel.ModelAttributes
     /// </summary>
     [Obsolete("Please use MethodAttribute instead")]
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
-    public class InvocationAttrbute : Attribute
+    public class InvocationAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        public InvocationAttrbute()
+        public InvocationAttribute()
         {
             this.PromptForUnsavedChanges = true;
         }
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="mustPrompt"></param>
-        public InvocationAttrbute(bool mustPrompt)
+        /// <param name="mustPrompt"><inheritdoc cref="PromptForUnsavedChanges" path="/summary"/></param>
+        public InvocationAttribute(bool mustPrompt)
         {
             this.PromptForUnsavedChanges = mustPrompt;
         }

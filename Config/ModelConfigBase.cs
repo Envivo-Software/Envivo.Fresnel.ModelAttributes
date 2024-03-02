@@ -3,23 +3,17 @@ using System.Collections.Generic;
 
 namespace Envivo.Fresnel.ModelAttributes.Config
 {
-    /// <summary>
-    /// <inheritdoc/>
-    /// </summary>
+    /// <inheritdoc cref="IModelConfig" />
     public abstract class ModelConfigBase : IModelConfig
     {
         private Dictionary<Type, IClassConfiguration> _ClassConfigurations = new();
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public virtual void Configure()
         {
         }
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public ClassConfiguration<T> ConfigureClass<T>()
             where T : class
         {
@@ -29,9 +23,7 @@ namespace Envivo.Fresnel.ModelAttributes.Config
             return classConfiguration;
         }
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public ClassConfiguration<T> ConfigureClass<T>(Attribute attribute, params Attribute[] additionalAttributes)
             where T : class
         {
@@ -42,9 +34,7 @@ namespace Envivo.Fresnel.ModelAttributes.Config
             return classConfiguration;
         }
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         /// <returns></returns>
         public IDictionary<Type, IClassConfiguration> GetClassConfigurations()
         {

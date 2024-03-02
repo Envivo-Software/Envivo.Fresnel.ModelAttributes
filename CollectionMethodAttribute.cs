@@ -10,11 +10,9 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Property)]
     public class CollectionAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="addMethodName">The name of the Method that adds an item to the collection</param>
-        /// <param name="removeMethodName">The name of the Method that removes an item to the collection</param>
+        /// <param name="addMethodName"><inheritdoc cref="AddMethodName" path="/summary"/></param>
+        /// <param name="removeMethodName"><inheritdoc cref="RemoveMethodName" path="/summary"/></param>
         public CollectionAttribute
         (
             string addMethodName = null,

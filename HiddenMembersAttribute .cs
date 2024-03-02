@@ -12,7 +12,7 @@ namespace Envivo.Fresnel.ModelAttributes
     /// </summary>
     public class HiddenMembersAttribute : Attribute
     {
-        private static Dictionary<string, string> s_FrameworkMemberNameMap = CreateFrameworkMemberNameMap();
+        private static Dictionary<string, string> _FrameworkMemberNameMap = CreateFrameworkMemberNameMap();
 
         private List<string> _HiddenMemberNames = new List<string>();
         private Dictionary<string, string> _HiddenMemberNamesMap = new Dictionary<string, string>();
@@ -96,7 +96,7 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <param name="memberName"></param>
         public bool ContainsFrameworkMember(string memberName)
         {
-            return s_FrameworkMemberNameMap.ContainsKey(memberName.ToLower());
+            return _FrameworkMemberNameMap.ContainsKey(memberName.ToLower());
         }
     }
 }

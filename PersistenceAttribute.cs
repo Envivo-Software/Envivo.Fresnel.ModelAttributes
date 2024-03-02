@@ -5,20 +5,18 @@ using System;
 namespace Envivo.Fresnel.ModelAttributes
 {
     /// <summary>
-    /// Delcares the persistence behaviour of the associated item
+    /// Declares the persistence behaviour of the associated item
     /// </summary>
     [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Property)]
     public class PersistenceAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="isPersistable"></param>
-        /// <param name="isLazyLoaded"></param>
-        /// <param name="isPessimisticLockingAllowed"></param>
-        /// <param name="isPessimisticLockingForced"></param>
-        /// <param name="isImmutable"></param>
-        /// <param name="backingFieldName"></param>
+        /// <param name="isPersistable"><inheritdoc cref="IsPersistable" path="/summary"/></param>
+        /// <param name="isLazyLoaded"><inheritdoc cref="IsLazyLoaded" path="/summary"/></param>
+        /// <param name="isPessimisticLockingAllowed"><inheritdoc cref="IsPessimisticLockingAllowed" path="/summary"/></param>
+        /// <param name="isPessimisticLockingForced"><inheritdoc cref="IsPessimisticLockingForced" path="/summary"/></param>
+        /// <param name="isImmutable"><inheritdoc cref="IsImmutable" path="/summary"/></param>
+        /// <param name="backingFieldName"><inheritdoc cref="BackingFieldName" path="/summary"/></param>
         public PersistenceAttribute
         (
             bool isPersistable,

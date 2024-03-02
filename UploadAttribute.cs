@@ -10,16 +10,12 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter)]
     public class UploadAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public UploadAttribute()
         {
         }
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public UploadAttribute(string accept)
         {
             this.Accept = accept;

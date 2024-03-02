@@ -10,6 +10,7 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.All)]
     public class VisualIdentifierAttribute : Attribute
     {
+        /// <inheritdoc />
         public VisualIdentifierAttribute()
         {
         }

@@ -8,9 +8,9 @@ using System.Reflection;
 namespace Envivo.Fresnel.ModelAttributes.Config
 {
     /// <summary>
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IClassConfiguration"/>
     /// </summary>
-    /// <typeparam name="TClass"></typeparam>
+    /// <typeparam name="TClass">The Domain Class being configured</typeparam>
     public sealed class ClassConfiguration<TClass> : IClassConfiguration
         where TClass : class
     {
@@ -24,34 +24,22 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         private readonly Dictionary<string, List<Attribute>> _MethodAttributes = new();
         private readonly Dictionary<string, Dictionary<string, List<Attribute>>> _MethodParameterAttributes = new();
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IReadOnlyCollection<Attribute> ClassAttributes => _ClassAttributes;
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IReadOnlyCollection<Attribute> ConstructorAttributes => _ConstructorAttributes;
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IDictionary<string, IReadOnlyCollection<Attribute>> ConstructorParameterAttributes => AsDictionaryOfReadOnlyCollection(_ConstructorParameterAttributes);
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IDictionary<string, IReadOnlyCollection<Attribute>> PropertyAttributes => AsDictionaryOfReadOnlyCollection(_PropertyAttributes);
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IDictionary<string, IReadOnlyCollection<Attribute>> MethodAttributes => AsDictionaryOfReadOnlyCollection(_MethodAttributes);
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public IDictionary<string, IDictionary<string, IReadOnlyCollection<Attribute>>> MethodParameterAttributes => AsDictionaryOfReadOnlyCollection(_MethodParameterAttributes);
 
         private IDictionary<TKey, IReadOnlyCollection<Attribute>> AsDictionaryOfReadOnlyCollection<TKey>(Dictionary<TKey, List<Attribute>> values)

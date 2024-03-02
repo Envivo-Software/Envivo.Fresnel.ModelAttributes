@@ -34,7 +34,9 @@ namespace Envivo.Fresnel.ModelAttributes.Config
         /// </summary>
         IDictionary<string, IReadOnlyCollection<Attribute>> MethodAttributes { get; }
 
+        /// <summary>
         /// Returns all Attributes that are applied to a Domain Class Method's Parameters
+        /// </summary>
         IDictionary<string, IDictionary<string, IReadOnlyCollection<Attribute>>> MethodParameterAttributes { get; }
     }
 }

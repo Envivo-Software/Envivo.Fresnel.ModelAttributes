@@ -5,21 +5,19 @@ using System;
 namespace Envivo.Fresnel.ModelAttributes
 {
     /// <summary>
-    /// Declares the operations that are allowed on the associaated item
+    /// Declares the operations that are allowed on the associated item
     /// </summary>
     [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method)]
     public class AllowedOperationsAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="canCreate"></param>
-        /// <param name="canRead"></param>
-        /// <param name="canModify"></param>
-        /// <param name="canAdd"></param>
-        /// <param name="canRemove"></param>
-        /// <param name="canClear"></param>
-        /// <param name="canInvoke"></param>
+        /// <param name="canCreate"><inheritdoc cref="CanCreate" path="/summary"/></param>
+        /// <param name="canRead"><inheritdoc cref="CanRead" path="/summary"/></param>
+        /// <param name="canModify"><inheritdoc cref="CanModify" path="/summary"/></param>
+        /// <param name="canAdd"><inheritdoc cref="CanAdd" path="/summary"/></param>
+        /// <param name="canRemove"><inheritdoc cref="CanRemove" path="/summary"/></param>
+        /// <param name="canClear"><inheritdoc cref="CanClear" path="/summary"/></param>
+        /// <param name="canInvoke"><inheritdoc cref="CanInvoke" path="/summary"/></param>
         public AllowedOperationsAttribute
         (
             bool canCreate = true,

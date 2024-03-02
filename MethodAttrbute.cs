@@ -10,12 +10,10 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Method)]
     public class MethodAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="relatedPropertyName">The name of the Property that the method should be rendered against</param>
-        /// <param name="mandatoryPromptText">Displays this text before the method is invoked</param>
-        /// <param name="unsavedChangesPromptText">Displays this text if the parent object has unsaved changes</param>
+        /// <param name="relatedPropertyName"><inheritdoc cref="RelatedPropertyName" path="/summary"/></param>
+        /// <param name="mandatoryPromptText"><inheritdoc cref="MandatoryPromptText" path="/summary"/></param>
+        /// <param name="unsavedChangesPromptText"><inheritdoc cref="UnsavedChangesPromptText" path="/summary"/></param>
         public MethodAttribute
         (
             string relatedPropertyName = null,

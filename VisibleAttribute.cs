@@ -10,11 +10,9 @@ namespace Envivo.Fresnel.ModelAttributes
     [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Constructor | AttributeTargets.Property | AttributeTargets.Method | AttributeTargets.Parameter)]
     public class VisibleAttribute : Attribute
     {
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
-        /// <param name="isVisible"></param>
-        /// <param name="isVisibleInLibrary"></param>
+        /// <param name="isVisible"><inheritdoc cref="IsVisible" path="/summary"/></param>
+        /// <param name="isVisibleInLibrary"><inheritdoc cref="IsVisibleInLibrary" path="/summary"/></param>
         public VisibleAttribute(bool isVisible = true, bool isVisibleInLibrary = true)
         {
             IsVisible = isVisible;
