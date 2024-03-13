@@ -19,12 +19,12 @@ namespace Envivo.Fresnel.ModelAttributes
         /// <param name="backingFieldName"><inheritdoc cref="BackingFieldName" path="/summary"/></param>
         public PersistenceAttribute
         (
-            bool isPersistable,
-            bool isLazyLoaded,
-            bool isPessimisticLockingAllowed,
-            bool isPessimisticLockingForced,
-            bool isImmutable,
-            string backingFieldName
+            bool isPersistable = true,
+            bool isLazyLoaded = false,
+            bool isPessimisticLockingAllowed = false,
+            bool isPessimisticLockingForced = false,
+            bool isImmutable = false,
+            string backingFieldName = null
         )
         {
             IsPersistable = isPersistable;
