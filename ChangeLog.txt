@@ -1,3 +1,21 @@
+2024-03-22: v2.5.0
+
+🎁 New features:
+- Added CollectionAttribute.VisibleColumnNames
+- Added CollectionAttribute.CanExpandRows
+- PersistenceAttribute now has default values
+
+🐞 Fixes:
+- Updates to XML comments/docs
+
+==============================================================================
+2023-11-29: v2.4.2
+
+🐞 Fixes:
+- Corrections to XML comments/docs
+
+==============================================================================
+
 2023-11-29: v2.4.1
 
 🐞 Fixes:
