@@ -14,4 +14,4 @@ For more details, see the documentation at https://github.com/Envivo-Software/En
   <img alt="Fresnel for .NET" src="https://www.envivo.co.uk/images/color_fg_transparent_bg_for_docs.png">
 </picture>
 
-*Copyright 2022-2023 Envivo Software*
+*Copyright 2022-2024 Envivo Software*
