@@ -12,10 +12,8 @@ namespace Envivo.Fresnel.ModelAttributes
     /// </summary>
     public class HiddenMembersAttribute : Attribute
     {
-        private static Dictionary<string, string> _FrameworkMemberNameMap = CreateFrameworkMemberNameMap();
-
-        private List<string> _HiddenMemberNames = new List<string>();
-        private Dictionary<string, string> _HiddenMemberNamesMap = new Dictionary<string, string>();
+        private readonly static Dictionary<string, string> _FrameworkMemberNameMap = CreateFrameworkMemberNameMap();
+        private readonly Dictionary<string, string> _HiddenMemberNamesMap = new(StringComparer.OrdinalIgnoreCase);
 
         private static Dictionary<string, string> CreateFrameworkMemberNameMap()
         {
@@ -38,24 +36,20 @@ namespace Envivo.Fresnel.ModelAttributes
             var results =
                 namesToHide
                 .Distinct()
-                .ToDictionary(n => n.ToLower());
+                .ToDictionary(n => n);
             return results;
         }
 
         private static IEnumerable<string> GetMethodNames(Type type)
         {
-            var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy;
-            var memberNames = type.GetMembers(flags).Select(m => m.Name).ToList();
+            const BindingFlags flags =
+                BindingFlags.Public |
+                BindingFlags.NonPublic |
+                BindingFlags.Instance |
+                BindingFlags.FlattenHierarchy;
 
+            var memberNames = type.GetMembers(flags).Select(m => m.Name).Distinct().ToList();
             return memberNames;
-        }
-
-        private void CacheHiddenMemberNames()
-        {
-            foreach (var name in _HiddenMemberNames)
-            {
-                _HiddenMemberNamesMap[name.ToLower()] = name;
-            }
         }
 
         /// <summary>
@@ -63,15 +57,13 @@ namespace Envivo.Fresnel.ModelAttributes
         /// </summary>
         public string[] Names
         {
-            get { return _HiddenMemberNames.ToArray(); }
+            get { return _HiddenMemberNamesMap.Values.ToArray(); }
 
             set
             {
-                // Instead of replacing the existing list, we'll append to it:
-                _HiddenMemberNames.AddRange(value);
                 foreach (var name in value)
                 {
-                    _HiddenMemberNamesMap[name.ToLower()] = name;
+                    _HiddenMemberNamesMap[name] = name;
                 }
             }
         }
@@ -80,23 +72,12 @@ namespace Envivo.Fresnel.ModelAttributes
         /// Returns TRUE if the Member with the given name should be hidden
         /// </summary>
         /// <param name="memberName"></param>
-        public bool Contains(string memberName)
-        {
-            if (_HiddenMemberNamesMap.Count == 0)
-            {
-                this.CacheHiddenMemberNames();
-            }
-
-            return _HiddenMemberNamesMap.GetValueOrDefault(memberName.ToLower()) != null;
-        }
+        public bool Contains(string memberName) => _HiddenMemberNamesMap.GetValueOrDefault(memberName) != null;
 
         /// <summary>
         /// Returns TRUE if the Member with the given name is a Framework member
         /// </summary>
         /// <param name="memberName"></param>
-        public bool ContainsFrameworkMember(string memberName)
-        {
-            return _FrameworkMemberNameMap.ContainsKey(memberName.ToLower());
-        }
+        public bool ContainsFrameworkMember(string memberName) => _FrameworkMemberNameMap.GetValueOrDefault(memberName) != null;
     }
 }
