@@ -11,8 +11,12 @@ namespace Envivo.Fresnel.ModelAttributes
     public class VisualIdentifierAttribute : Attribute
     {
         /// <inheritdoc />
-        public VisualIdentifierAttribute()
+        /// <param name="iconHtml"><inheritdoc cref="IconHtml" path="/summary"/></param>
+        /// <param name="htmlColour"><inheritdoc cref="HtmlColour" path="/summary"/></param>
+        public VisualIdentifierAttribute(string iconHtml = null, string htmlColour = null)
         {
+            IconHtml = iconHtml;
+            HtmlColour = htmlColour;
         }
 
         /// <summary>
