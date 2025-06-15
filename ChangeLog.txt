@@ -1,3 +1,13 @@
+2025-06-15: v2.7.0
+
+🎁 New features:
+- Added VisibleAttribute.IsVisibleInSearchResults, to hide columns in Search Results
+
+🎨 Improvements:
+- UiControlType now has "Folder" item
+- VisualIdentifierAttribute now has constructor args (standardised)
+
+==============================================================================
 2025-04-23: v2.6.0
 
 🎁 New features:
